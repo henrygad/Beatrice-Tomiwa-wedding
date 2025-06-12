@@ -13,9 +13,9 @@ import Smallscreennav from "./components/Smallscreennav";
 const App = () => {
   return <>
     {/* Header area*/}
-    <header className="relative flex w-full h-full overflow-x-hidden">
+    <header className="relative flex w-full h-full overflow-hidden">
       {/* Navigation bar area */}
-      <nav className="container flex items-center gap-x-10 fixed top-10 right-0 left-0 w-full md:pl-20 z-20">
+      <nav className="container flex items-center gap-x-10 fixed top-10 right-0 left-0 w-full md:pl-40 z-20">
         {/* Big screen nav list */}
         <ul className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap min-h-[53px] h-auto rounded bg-white/5 backdrop-blur-[12px] shadow">
           <li>
@@ -38,10 +38,10 @@ const App = () => {
       </nav>
     </header>
     {/* Main content area */}
-    <main>
+    <main className="overflow-hidden">
       {/* The hero section */}
       <section
-        className="relative flex w-full min-h-screen h-auto bg-cover bg-center bg-no-repeat overflow-x-hidden"
+        className="relative flex w-full min-h-screen h-auto bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${hero_background_image})` }}
       >
         {/* Overlay background image with 50% opacity drop*/}
@@ -49,32 +49,32 @@ const App = () => {
         </div>
         {/* The hero section content goes in here */}
         <div className="relative flex-1 flex flex-col z-10">
-          <span className="flex-1 flex flex-col justify-center items-center gap-y-12">
+          <span className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12">
             <span className="block">
-              <h3 className="text-[#FFFFFF] text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+              <h3 className="text-[#FFFFFF] text-[38px] sm:text-[40px] md:text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
                 31 . 08. 25
               </h3>
             </span>
             <span className="block">
-              <h1 className="text-[#C0BFBD] text-[90px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+              <h1 className="text-[#C0BFBD] text-[40px] sm:text-[64px] md:text-[90px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
                 Beatrice & Tomiwa
               </h1>
             </span>
             <span className="block">
-              <p className="text-[#FFFFFF] text-[36px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+              <p className="text-[#FFFFFF] text-[20px] sm:text-[30px] md:text-[36px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
                 Wedding ceremony
               </p>
             </span>
           </span>
           <span className="flex justify-center items-center basis-20">
-            <p className="text-[#FFFFFF] text-[27px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+            <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px]  italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
               #TOBEEFOREVER2025
             </p>
           </span>          
         </div>
       </section>
       {/*The groom section */}
-      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED] overflow-x-visible">
+      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
         <Regularsection
           displayImageUrl={couple_image_1}
           title={<>
@@ -86,7 +86,10 @@ const App = () => {
             From late-night laughs to deep conversations <br />
             From shared playlists to shared dreams... <br />
             With Jahs help we have grown a love rooted in <br />
-            joy, trust and undeniable rhythm... We are saying YES to forever. <br />
+            joy, trust and undeniable rhythm...
+            <br className="sm:hidden" />
+            <br className="sm:hidden" />            
+            We are saying YES to forever. <br />
             Join us as we celebrate our special day.
           </>}
           buttonField="The Groom"
@@ -94,14 +97,14 @@ const App = () => {
         <img
           src={couple_image_2}
           alt=""
-          className="absolute bottom-0 translate-y-1/2 right-0 w-[250px] h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
+          className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] sm:w-[250px] h-[110px] sm:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
         />
       </section>
       {/*Empthy space */}
-      <section className="min-h-[250px] h-auto w-full bg-[#F9F6ED]">
+      <section className=" min-h-[50px] sm:min-h-[250px] h-auto w-full bg-[#F9F6ED]">
       </section>
       {/* The bride section */}
-      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED] overflow-x-hidden">
+      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
         <Regularsection
           displayImageUrl={display_image}
           title={<>
@@ -119,7 +122,7 @@ const App = () => {
         />
       </section>
       {/* Our schedule section */}
-      <section className="flex flex-col gap-20 w-full min-h-[600px] h-auto bg-[#3D4E3C] overflow-x-hidden">
+      <section className="flex flex-col gap-20 w-full min-h-[600px] h-auto bg-[#3D4E3C]">
         {/* Title Text area  */}
         <span className="basis-30 flex justify-center items-center">
           <h2 className="text-[#FFFFFF] text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
@@ -134,12 +137,12 @@ const App = () => {
         </div>
       </section>
       {/* Our story section */}
-      <section className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] overflow-x-hidden">
+      <section className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED]">
         <div className="flex-1 flex flex-col gap-y-10 bg-[#FFFFFF]">
           {/* Title Text area  */}
           <span className="basis-30 flex justify-center items-center">
             <h2 className="text-[#000000] text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-              Our Schedule
+              Our Story
             </h2>
           </span>
           {/* main text area*/}
@@ -159,7 +162,7 @@ const App = () => {
       </section>
     </main>
     {/* footer area*/}
-    <footer className="flex w-full min-h-[340px] h-auto text-white bg-[#3D4E3C] overflow-x-hidden">
+    <footer className="flex w-full min-h-[340px] h-auto text-white bg-[#3D4E3C] overflow-hidden">
       {/* main footer text area*/}
       <span className="flex-1 flex justify-center items-center">
         <p className="text-[40px] text-[#FFFFFF] text-center whitespace-normal text-wrap">

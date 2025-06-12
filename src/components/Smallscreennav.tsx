@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ham_icon from "../assets/ham.svg";
+import useClickOutSide from "../hooks/useClickOutSide";
 
 const Smallscreennav = () => {
     const [dropDown, setDropDown] = useState(false);
+    const dropDownRef = useRef<HTMLElement>(null);
+    useClickOutSide(dropDownRef, () => setDropDown(false));
 
-    return <span className="relative flex-1 flex justify-end items-center sm:hidden">
+    return <span
+        ref={dropDownRef}
+        className="relative flex-1 flex justify-end items-center sm:hidden">
         <ul className={`${dropDown ? "flex" : "hidden"} flex-col justify-evenly items-center 
         absolute top-2 right-8
         font-main font-normal italic leading-[100%] tracking-normal text-[16px] text-[#FFFFFF] text-center whitespace-pre text-nowrap

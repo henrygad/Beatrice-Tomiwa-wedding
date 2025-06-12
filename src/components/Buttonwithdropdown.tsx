@@ -24,7 +24,7 @@ const Buttonwithdropdown = ({ buttonField, message }: Props) => {
         </span>
         <button
             onClick={() => setDropDown(!dropDown)}
-            className="font-main text-[9px] sm:text-[16px] text-[#000000] text-center font-normal leading-[100%] tracking-normal whitespace-pre text-nowrap h-[30px] w-[50px] sm:h-[41px] sm:w-[97px] bg-[#FFFFFF] rounded-[5px] sm:rounded-[10px] shadow cursor-pointer">
+            className="font-main text-[9px] sm:text-[16px] text-[#000000] text-center font-normal leading-[100%] tracking-normal whitespace-pre text-nowrap h-[30px] w-[50px] sm:w-[86px] sm:h-[41px] md:w-[97px] bg-[#FFFFFF] rounded-[5px] sm:rounded-[10px] shadow cursor-pointer">
             {buttonField}
         </button>
     </span>
