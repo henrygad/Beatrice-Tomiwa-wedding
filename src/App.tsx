@@ -8,23 +8,20 @@ import reception_icon from "./assets/reception-icon.svg"
 import after_party_icon from "./assets/after-party-icon.svg"
 import Regularsection from "./ui/Regularsection";
 import Buttonwithdropdown from "./components/Buttonwithdropdown";
-import Smallscreennav from "./components/Smallscreennav";
+import Responsivenav from "./components/Responsivenav";
+import { useRef } from "react";
 
-const App = () => {
+const App = () => {  
+  const homeSectionRef = useRef<HTMLElement>(null);
+  const ourStorySectionRef = useRef<HTMLElement>(null);
+
   return <>
     {/* Header area*/}
-    <header className="relative flex w-full h-full overflow-hidden">
+    <header
+      ref={homeSectionRef}
+      className="relative flex w-full h-full overflow-hidden">
       {/* Navigation bar area */}
-      <nav className="container flex items-center gap-x-10 fixed top-10 right-0 left-0 w-full md:pl-40 z-20">
-        {/* Big screen nav list */}
-        <ul className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap min-h-[53px] h-auto rounded bg-white/5 backdrop-blur-[12px] shadow">
-          <li>
-            <button className="cursor-pointer">Home</button>
-          </li>
-          <li>
-            <button className="cursor-pointer">Our Story</button>
-          </li>
-        </ul>
+      <nav className="container flex items-center gap-x-10 sm:flex-row-reverse fixed top-10 right-0 left-0 w-full md:pl-40 z-20">        
         {/* Gift btn */}
         <Buttonwithdropdown
           buttonField=" Give gift"
@@ -32,15 +29,19 @@ const App = () => {
             Thank you for the love, if you would like to <br />
             give a monetary gift then use this account
           </>}
-        />   
+        />
         {/* Small screen nav list */}
-        <Smallscreennav />
+        <Responsivenav
+          homeSectionRef={homeSectionRef}
+          ourStorySectionRef={ourStorySectionRef}
+        />
       </nav>
     </header>
     {/* Main content area */}
     <main className="overflow-hidden">
       {/* The hero section */}
       <section
+        ref={homeSectionRef}
         className="relative flex w-full min-h-screen h-auto bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${hero_background_image})` }}
       >
@@ -70,7 +71,7 @@ const App = () => {
             <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px]  italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
               #TOBEEFOREVER2025
             </p>
-          </span>          
+          </span>
         </div>
       </section>
       {/*The groom section */}
@@ -88,7 +89,7 @@ const App = () => {
             With Jahs help we have grown a love rooted in <br />
             joy, trust and undeniable rhythm...
             <br className="sm:hidden" />
-            <br className="sm:hidden" />            
+            <br className="sm:hidden" />
             We are saying YES to forever. <br />
             Join us as we celebrate our special day.
           </>}
@@ -97,11 +98,11 @@ const App = () => {
         <img
           src={couple_image_2}
           alt=""
-          className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] sm:w-[250px] h-[110px] sm:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
+          className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] h-[110px] md:w-[250px] md:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
         />
       </section>
       {/*Empthy space */}
-      <section className=" min-h-[50px] sm:min-h-[250px] h-auto w-full bg-[#F9F6ED]">
+      <section className=" min-h-[100px] md:min-h-[250px] h-auto w-full bg-[#F9F6ED] ">
       </section>
       {/* The bride section */}
       <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
@@ -122,32 +123,37 @@ const App = () => {
         />
       </section>
       {/* Our schedule section */}
-      <section className="flex flex-col gap-20 w-full min-h-[600px] h-auto bg-[#3D4E3C]">
-        {/* Title Text area  */}
-        <span className="basis-30 flex justify-center items-center">
-          <h2 className="text-[#FFFFFF] text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-            Our Schedule
-          </h2>
-        </span>
-        {/* Our schedule boxs area*/}
-        <div className="flex-1 flex justify-evenly items-start gap-20 flex-wrap">
-          <Eventbox iconUrl={bride_price_icon} time="12:00 PM" event="Paying of bride price" />
-          <Eventbox iconUrl={reception_icon} time="2:00 PM" event="Reception follows" />
-          <Eventbox iconUrl={after_party_icon} time="6:00 PM" event="The after party begings!!!!" />
+      <section className="flex min-h-[453px] md:min-h-[600px] h-auto bg-[#F9F6ED] md:bg-[#3D4E3C] p-10 md:p-0">
+        <div className="container flex-1 flex flex-col bg-[#3D4E3C] md:bg-inherit rounded-[10px]">
+          {/* Title Text area  */}
+          <span className="basis-20 md:basis-30 flex justify-center items-center">
+            <h2 className="text-[#FFFFFF] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+              Our Schedule
+            </h2>
+          </span>
+          {/* Our schedule boxs area*/}
+          <div className="flex-1 md:flex md:justify-evenly md:items-center md:gap-20 md:flex-wrap space-y-10 px-10 pb-10">
+            <Eventbox iconUrl={bride_price_icon} time="12:00 PM" event="Paying of bride price" />
+            <Eventbox iconUrl={reception_icon} time="2:00 PM" event="Reception follows" />
+            <Eventbox iconUrl={after_party_icon} time="6:00 PM" event="The after party begings!!!!" />
+          </div>
         </div>
       </section>
       {/* Our story section */}
-      <section className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED]">
-        <div className="flex-1 flex flex-col gap-y-10 bg-[#FFFFFF]">
+      <section
+        ref={ourStorySectionRef}
+        className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] p-10 md:p-0"
+      >
+        <div className="flex-1 flex flex-col bg-[#FFFFFF] rounded">
           {/* Title Text area  */}
-          <span className="basis-30 flex justify-center items-center">
-            <h2 className="text-[#000000] text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+          <span className="basis-20 md:basis-30 flex justify-center items-center">
+            <h2 className="text-[#000000] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
               Our Story
             </h2>
           </span>
           {/* main text area*/}
-          <span className="flex-1 flex justify-center items-start">
-            <p className="max-w-[1100px] text-[24px] text-[#808080] text-center whitespace-normal text-wrap">
+          <span className="flex-1 flex justify-center items-center">
+            <p className="max-w-[1100px] text-[16px] md:text-[24px] text-[#808080] text-center whitespace-normal text-wrap px-10 pb-10">
               We connected through a shared perspective- A conversation that stood out and lingered !
               What followed was a quiet, steady friendship from afar. For two years we checked on each other,
               built trust amd shared the little things that mattered the most. When she visited the country,
@@ -162,12 +168,12 @@ const App = () => {
       </section>
     </main>
     {/* footer area*/}
-    <footer className="flex w-full min-h-[340px] h-auto text-white bg-[#3D4E3C] overflow-hidden">
+    <footer className="flex w-full min-h-[216px] md:min-h-[340px] h-auto text-white bg-[#3D4E3C] overflow-hidden">
       {/* main footer text area*/}
-      <span className="flex-1 flex justify-center items-center">
-        <p className="text-[40px] text-[#FFFFFF] text-center whitespace-normal text-wrap">
+      <span className="container flex-1 flex justify-center items-center">
+        <p className="text-[24px] md:text-[40px] text-[#FFFFFF] text-center whitespace-normal text-wrap">
           Beatrice and Tomiwa says a very big thank you to everyone for the love and support...
-        </p>        
+        </p>
       </span>
     </footer>
   </>
