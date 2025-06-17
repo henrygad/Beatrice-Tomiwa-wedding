@@ -7,13 +7,26 @@ import bride_price_icon from "./assets/bride-price-icon.svg"
 import reception_icon from "./assets/reception-icon.svg"
 import after_party_icon from "./assets/after-party-icon.svg"
 import Regularsection from "./ui/Regularsection";
-import Buttonwithdropdown from "./components/Buttonwithdropdown";
 import Responsivenav from "./components/Responsivenav";
 import { useRef } from "react";
+import Giftbutton from "./components/Giftbuttonalert";
+import Animatetext from "./components/Animatetext"
 
 const App = () => {  
   const homeSectionRef = useRef<HTMLElement>(null);
   const ourStorySectionRef = useRef<HTMLElement>(null);
+
+  const lines = [
+    <h3 className="text-[#FFFFFF] text-[38px] sm:text-[40px] md:text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+      31 . 08. 25
+    </h3>,
+    <h1 className="text-[#C0BFBD] text-[40px] sm:text-[64px] md:text-[90px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+      Beatrice & Tomiwa
+    </h1>,
+    <p className="text-[#FFFFFF] text-[20px] sm:text-[30px] md:text-[36px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+      Wedding ceremony
+    </p>,    
+  ];
 
   return <>
     {/* Header area*/}
@@ -23,7 +36,7 @@ const App = () => {
       {/* Navigation bar area */}
       <nav className="container flex items-center gap-x-10 sm:flex-row-reverse fixed top-10 right-0 left-0 w-full md:pl-40 z-20">        
         {/* Gift btn */}
-        <Buttonwithdropdown
+        <Giftbutton
           buttonField=" Give gift"
           message={<>
             Thank you for the love, if you would like to <br />
@@ -49,30 +62,25 @@ const App = () => {
         <div className="absolute inset-0 bg-black/45">
         </div>
         {/* The hero section content goes in here */}
-        <div className="relative flex-1 flex flex-col z-10">
-          <span className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12">
-            <span className="block">
-              <h3 className="text-[#FFFFFF] text-[38px] sm:text-[40px] md:text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-                31 . 08. 25
-              </h3>
-            </span>
-            <span className="block">
-              <h1 className="text-[#C0BFBD] text-[40px] sm:text-[64px] md:text-[90px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-                Beatrice & Tomiwa
-              </h1>
-            </span>
-            <span className="block">
-              <p className="text-[#FFFFFF] text-[20px] sm:text-[30px] md:text-[36px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-                Wedding ceremony
+        <div className="relative flex-1 flex flex-col z-10">         
+          <Animatetext
+            lines={lines}
+            ref={homeSectionRef}
+            className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12"
+            once={false}
+          />
+          <Animatetext
+            lines={[
+              <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px]  italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+                #TOBEEFOREVER2025
               </p>
-            </span>
-          </span>
-          <span className="flex justify-center items-center basis-20">
-            <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px]  italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-              #TOBEEFOREVER2025
-            </p>
-          </span>
+            ]}
+            ref={homeSectionRef}
+            className="flex justify-center items-center basis-20"
+            once={false}
+          />          
         </div>
+        
       </section>
       {/*The groom section */}
       <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
