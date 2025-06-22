@@ -1,30 +1,19 @@
-import { motion, useAnimation, useInView } from "framer-motion";
-import { useEffect, type ReactElement } from "react";
+import { motion, } from "framer-motion";
+import { type ReactElement } from "react";
 
 
 type Props = {
-    lines: (string |ReactElement)[]
-    ref: React.RefObject<HTMLElement | null>
+    linesOfText: (string | ReactElement)[]
     className: string,
-    once: boolean
 }
 
-const Animatetext = ({ ref, lines, className, once }: Props) => {
-    const inView = useInView(ref, { once, margin: "-100px" }); // play again when in view
-    const controls = useAnimation();
-
-    useEffect(() => {
-        if (inView) {
-            controls.start("visible");
-        }
-    }, [inView, controls]);
+const Animatetext = ({ linesOfText, className }: Props) => {
 
     return (
-        <motion.span
-            ref={ref}
+        <motion.span            
             className={className}
             initial="hidden"
-            animate={controls}
+            animate={"visible"}
             exit="hidden"
             variants={{
                 hidden: {},
@@ -35,7 +24,7 @@ const Animatetext = ({ ref, lines, className, once }: Props) => {
                 }
             }}
         >
-            {lines.map((text, i) => (
+            {linesOfText.map((text, i) => (
                 <motion.span
                     key={i}
                     variants={

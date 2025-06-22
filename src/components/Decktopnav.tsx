@@ -9,12 +9,48 @@ type Props = {
     }[]
 };
 
+
 const Decktopnav = ({ navLinks }: Props) => {
     const [active, setActive] = useState("Home");
     const autoNavigate = useAutoNavigate();
+
     
     return <span className="flex-1 hidden sm:flex">
-        <ul className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap min-h-[53px] h-auto rounded bg-white/5 backdrop-blur-[12px] shadow">
+        <motion.ul
+            key="decktop-nav"
+            variants={{
+                hidden: { opacity: 0, y: -30 },
+                visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                        type: "spring",
+                        delay: 0.5,
+                        stiffness: 120,
+                        damping: 20,
+                        when: "beforeChildren",
+                        staggerChildren: 0.05,
+                    },
+                },
+                exit: {
+                    opacity: 0,
+                    y: -30,
+                    transition: {
+                        type: "spring",
+                        delay: 0.5,
+                        stiffness: 100,
+                        damping: 25,
+                        when: "afterChildren",
+                        staggerChildren: 0.03,
+                        staggerDirection: -1,
+                    },
+                },
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap min-h-[53px] h-auto rounded bg-white/5 backdrop-blur-[12px] shadow"
+        >
             {
                 navLinks.map(nav =>
                     <motion.li
@@ -22,6 +58,11 @@ const Decktopnav = ({ navLinks }: Props) => {
                         onClick={() => setActive(nav.content)}
                         whileHover={{ y: -3 }}
                         whileTap={{ scale: 0.95 }}
+                        variants={{
+                            hidden: { opacity: 0, y: -10 },
+                            visible: { opacity: 1, y: 0 },
+                            exit: { opacity: 0, y: -10 },
+                        }}
                         className="relative cursor-pointer"
                     >
                         <button
@@ -40,7 +81,7 @@ const Decktopnav = ({ navLinks }: Props) => {
                     </motion.li>
                 )
             }
-        </ul>
+        </motion.ul>
     </span>;
 };
 

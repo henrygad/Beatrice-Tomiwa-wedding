@@ -11,12 +11,13 @@ import Responsivenav from "./components/Responsivenav";
 import { useRef } from "react";
 import Giftbutton from "./components/Giftbuttonalert";
 import Animatetext from "./components/Animatetext"
+import { motion } from "framer-motion"
 
 const App = () => {  
   const homeSectionRef = useRef<HTMLElement>(null);
   const ourStorySectionRef = useRef<HTMLElement>(null);
 
-  const lines = [
+  const linesOfText = [
     <h3 className="text-[#FFFFFF] text-[38px] sm:text-[40px] md:text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
       31 . 08. 25
     </h3>,
@@ -64,23 +65,26 @@ const App = () => {
         {/* The hero section content goes in here */}
         <div className="relative flex-1 flex flex-col z-10">         
           <Animatetext
-            lines={lines}
-            ref={homeSectionRef}
-            className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12"
-            once={false}
+            linesOfText={linesOfText}
+            className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12"            
           />
-          <Animatetext
-            lines={[
-              <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px]  italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-                #TOBEEFOREVER2025
-              </p>
-            ]}
-            ref={homeSectionRef}
-            className="flex justify-center items-center basis-20"
-            once={false}
-          />          
-        </div>
-        
+          <span className="flex justify-center items-center basis-20">
+            <motion.p
+              initial={{ opacity: 0, y: -1000 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 1.2,
+                duration: 2,
+                type: "spring",
+                stiffness: 80,
+                damping: 14
+              }}
+              className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px] italic leading-[100%] tracking-normal drop-shadow-md font-normal font-main whitespace-pre text-nowrap text-center"
+            >
+              #TOBEEFOREVER2025
+            </motion.p>
+          </span>
+        </div>        
       </section>
       {/*The groom section */}
       <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">

@@ -25,19 +25,48 @@ const Giftbutton = ({ buttonField, message }: Props) => {
             <AnimatePresence>
                 {dropDown && (
                     <motion.span
-                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                        transition={{ duration: 0.5, ease: "easeInOut" }}
-                        className="fixed top-0 left-1/2 origin-center -translate-x-1/2 z-30"
+                        key="gift-button"
+                        variants={{
+                            hidden: { opacity: 0, y: -30 },
+                            visible: {
+                                opacity: 1,
+                                y: 0,
+                                transition: {
+                                    type: "spring",
+                                    stiffness: 120,
+                                    damping: 20,
+                                    when: "beforeChildren",
+                                    staggerChildren: 0.05,
+                                },
+                            },
+                            exit: {
+                                opacity: 0,
+                                y: -30,
+                                transition: {
+                                    type: "spring",
+                                    stiffness: 100,
+                                    damping: 25,
+                                    when: "afterChildren",
+                                    staggerChildren: 0.03,
+                                    staggerDirection: -1,
+                                },
+                            },
+                        }}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        className="block fixed top-1 left-1/2 origin-left -translate-x-1/2 z-30"
                     >
                         <motion.span
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1}}
-                            exit={{ opacity: 0}}
-                            transition={{ duration: 0.6, ease: "easeInOut" }}
+                            variants={{
+                                hidden: { opacity: 0, y: -10 },
+                                visible: { opacity: 1, y: 0 },
+                                exit: { opacity: 0, y: -10 },
+                            }}
                             className="block min-h-[70px] sm:min-h-[136px] h-auto min-w-[204px] sm:min-w-[404px] w-auto bg-[#80808066] backdrop-blur-[40px] rounded-b-[20px] p-2 sm:p-4">
-                            <p className="font-main text-[12px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap ">
+                            <p
+                                className="font-main text-[12px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap "
+                            >
                                 {message}
                             </p>
                         </motion.span>
@@ -45,7 +74,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                 )}
             </AnimatePresence>
             <motion.button
-                onClick={() => setDropDown((prev) => !prev)}
+                onClick={() => setDropDown(true)}
                 initial={{ opacity: 0, scale: 0.8, y: -10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 whileHover={{
@@ -75,12 +104,11 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                         <span className="inline-block">🎁</span>
                     }
                 </>
-                 {buttonField}
+                {buttonField}
             </motion.button>
         </span>
     );
-}
-
+};
 
 export default Giftbutton;
 
