@@ -7,7 +7,7 @@ type Props = {
     className: string,
 }
 
-const Animatetext = ({ linesOfText, className }: Props) => {
+const Animatemultipletext = ({ linesOfText, className }: Props) => {
 
     return (
         <motion.span            
@@ -30,10 +30,10 @@ const Animatetext = ({ linesOfText, className }: Props) => {
                     variants={
                         {
                             hidden: { opacity: 0, y: 30 },
-                            visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
+                            visible: { opacity: 1, y: 0, transition: { duration: i+1, ease: "easeOut" } }
                         }
                     }
-                    className="block"
+                    className="inline-block"
                 >
                     {text}
                 </motion.span>
@@ -42,4 +42,4 @@ const Animatetext = ({ linesOfText, className }: Props) => {
     );
 };
 
-export default Animatetext;
+export default Animatemultipletext;

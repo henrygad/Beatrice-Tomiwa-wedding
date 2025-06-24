@@ -1,4 +1,20 @@
+/* load tailwindcss */
 @import "tailwindcss";
+
+/* load font family */
+@font-face {
+    font-family: 'Instrument Serif';
+    src: url('./assets/fonts/Instrument_Serif/InstrumentSerif-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Instrument Serif';
+    src: url('./assets/fonts/Instrument_Serif/InstrumentSerif-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
 
 /* Set up design tokens with @theme */
 @theme {

@@ -10,12 +10,16 @@ import Regularsection from "./ui/Regularsection";
 import Responsivenav from "./components/Responsivenav";
 import { useRef } from "react";
 import Giftbutton from "./components/Giftbuttonalert";
-import Animatetext from "./components/Animatetext"
+import Animatemultipletext from "./components/Animatemultipletext"
 import { motion } from "framer-motion"
+import FadeInSection from "./ui/Fadeinsection";
 
-const App = () => {  
+const App = () => {
   const homeSectionRef = useRef<HTMLElement>(null);
-  const ourStorySectionRef = useRef<HTMLElement>(null);
+  const ourStorySectionRef = useRef<HTMLDivElement>(null);
+  const groomSectionRef = useRef<HTMLElement | null>(null);
+  const brideSectionRef = useRef<HTMLElement | null>(null);
+  const receptionSectionRef = useRef<HTMLElement | null>(null);
 
   const linesOfText = [
     <h3 className="text-[#FFFFFF] text-[38px] sm:text-[40px] md:text-[48px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
@@ -26,7 +30,7 @@ const App = () => {
     </h1>,
     <p className="text-[#FFFFFF] text-[20px] sm:text-[30px] md:text-[36px] italic leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
       Wedding ceremony
-    </p>,    
+    </p>,
   ];
 
   return <>
@@ -35,7 +39,7 @@ const App = () => {
       ref={homeSectionRef}
       className="relative flex w-full h-full overflow-hidden">
       {/* Navigation bar area */}
-      <nav className="container flex items-center gap-x-10 sm:flex-row-reverse fixed top-10 right-0 left-0 w-full md:pl-40 z-20">        
+      <nav className="container flex items-center gap-x-10 sm:flex-row-reverse fixed top-10 right-0 left-0 w-full md:pl-40 z-20">
         {/* Gift btn */}
         <Giftbutton
           buttonField=" Give gift"
@@ -63,121 +67,155 @@ const App = () => {
         <div className="absolute inset-0 bg-black/45">
         </div>
         {/* The hero section content goes in here */}
-        <div className="relative flex-1 flex flex-col z-10">         
-          <Animatetext
+        <div className="relative flex-1 flex flex-col z-10">
+          <Animatemultipletext
             linesOfText={linesOfText}
-            className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12"            
+            className="flex-1 flex flex-col justify-center items-center gap-y-7 sm:gap-y-8 md:gap-y-12"
           />
-          <span className="flex justify-center items-center basis-20">
-            <motion.p
-              initial={{ opacity: 0, y: -1000 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 1.2,
-                duration: 2,
-                type: "spring",
-                stiffness: 80,
-                damping: 14
+          <div className="flex justify-center items-center basis-20">
+            <motion.span
+              className="inline-block"
+              initial="hidden"
+              animate={"visible"}
+              exit="hidden"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.4
+                  }
+                }
               }}
-              className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px] italic leading-[100%] tracking-normal drop-shadow-md font-normal font-main whitespace-pre text-nowrap text-center"
             >
-              #TOBEEFOREVER2025
-            </motion.p>
-          </span>
-        </div>        
-      </section>
-      {/*The groom section */}
-      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
-        <Regularsection
-          displayImageUrl={couple_image_1}
-          title={<>
-            Join us as we embark on a journey <br />
-            of love, joy <br />
-            and eternal partnership.
-          </>}
-          content={<>
-            From late-night laughs to deep conversations <br />
-            From shared playlists to shared dreams... <br />
-            With Jahs help we have grown a love rooted in <br />
-            joy, trust and undeniable rhythm...
-            <br className="sm:hidden" />
-            <br className="sm:hidden" />
-            We are saying YES to forever. <br />
-            Join us as we celebrate our special day.
-          </>}
-          buttonField="The Groom"
-        />
-        <img
-          src={couple_image_2}
-          alt=""
-          className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] h-[110px] md:w-[250px] md:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
-        />
-      </section>
-      {/*Empthy space */}
-      <section className=" min-h-[100px] md:min-h-[250px] h-auto w-full bg-[#F9F6ED] ">
-      </section>
-      {/* The bride section */}
-      <section className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]">
-        <Regularsection
-          displayImageUrl={display_image}
-          title={<>
-            Come and celebrate our <br />
-            special day with us
-          </>}
-          content={<>
-            We would be so honoured to share this beautiful <br />
-            moment with the people we love. Your presence <br />
-            would mean the world to us. Lets make <br />
-            unforgettable memories together!!
-          </>}
-          buttonField="The Bride"
-          className="flex-row-reverse"
-        />
-      </section>
-      {/* Our schedule section */}
-      <section className="flex min-h-[453px] md:min-h-[600px] h-auto bg-[#F9F6ED] md:bg-[#3D4E3C] p-10 md:p-0">
-        <div className="container flex-1 flex flex-col bg-[#3D4E3C] md:bg-inherit rounded-[10px]">
-          {/* Title Text area  */}
-          <span className="basis-20 md:basis-30 flex justify-center items-center">
-            <h2 className="text-[#FFFFFF] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-              Our Schedule
-            </h2>
-          </span>
-          {/* Our schedule boxs area*/}
-          <div className="flex-1 md:flex md:justify-evenly md:items-center md:gap-20 md:flex-wrap space-y-10 px-10 pb-10">
-            <Eventbox iconUrl={bride_price_icon} time="12:00 PM" event="Paying of bride price" />
-            <Eventbox iconUrl={reception_icon} time="2:00 PM" event="Reception follows" />
-            <Eventbox iconUrl={after_party_icon} time="6:00 PM" event="The after party begings!!!!" />
+              <motion.span
+                variants={
+                  {
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 4, ease: "easeOut" } }
+                  }
+                }
+                className="inline-block"
+              >
+                <p className="text-[#FFFFFF] text-[16px] sm:text-[20px]  md:text-[27px] italic leading-[100%] tracking-normal drop-shadow-md font-normal font-main whitespace-pre text-nowrap text-center">
+                  #TOBEEFOREVER2025
+                </p>
+              </motion.span>
+            </motion.span>            
           </div>
         </div>
       </section>
-      {/* Our story section */}
-      <section
-        ref={ourStorySectionRef}
-        className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] p-10 md:p-0"
-      >
-        <div className="flex-1 flex flex-col bg-[#FFFFFF] rounded">
-          {/* Title Text area  */}
-          <span className="basis-20 md:basis-30 flex justify-center items-center">
-            <h2 className="text-[#000000] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
-              Our Story
-            </h2>
-          </span>
-          {/* main text area*/}
-          <span className="flex-1 flex justify-center items-center">
-            <p className="max-w-[1100px] text-[16px] md:text-[24px] text-[#808080] text-center whitespace-normal text-wrap px-10 pb-10">
-              We connected through a shared perspective- A conversation that stood out and lingered !
-              What followed was a quiet, steady friendship from afar. For two years we checked on each other,
-              built trust amd shared the little things that mattered the most. When she visited the country,
-              we finally met ain person - and from that very day it just felt right. Natural and effortless.
-              Forever was suddenly something real with her. Since then we have shared laughter, deep conversations,
-              fights, tears, and a bond thats only grown stronger with time and distance.
-              Even in a long distance relationship we have been constant and always present in each others lives.
-              The most incredible love that we have found and accepted humbly as a gift from Jah.
-            </p>
-          </span>
-        </div>
+      {/*The groom section */}
+      <FadeInSection
+        ref={groomSectionRef}
+        delay={0.2}
+        className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]"
+        children={<>
+          <Regularsection
+            displayImageUrl={couple_image_1}
+            title={<>
+              Join us as we embark on a journey <br />
+              of love, joy <br />
+              and eternal partnership.
+            </>}
+            content={<>
+              From late-night laughs to deep conversations <br />
+              From shared playlists to shared dreams... <br />
+              With Jahs help we have grown a love rooted in <br />
+              joy, trust and undeniable rhythm...
+              <br className="sm:hidden" />
+              <br className="sm:hidden" />
+              We are saying YES to forever. <br />
+              Join us as we celebrate our special day.
+            </>}
+            buttonField="The Groom"
+          />
+          <img
+            src={couple_image_2}
+            alt=""
+            className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] h-[110px] md:w-[250px] md:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
+          />
+        </>}
+      />     
+      {/*Empthy space */}
+      <section className="min-h-[100px] md:min-h-[250px] h-auto w-full bg-[#F9F6ED] ">
       </section>
+      {/* The bride section */} 
+      <FadeInSection
+        ref={brideSectionRef}
+        delay={0.4}
+        className="relative flex w-full min-h-screen h-auto bg-[#F9F6ED]"
+        children={<>
+          <Regularsection
+            displayImageUrl={display_image}
+            title={<>
+              Come and celebrate our <br />
+              special day with us
+            </>}
+            content={<>
+              We would be so honoured to share this beautiful <br />
+              moment with the people we love. Your presence <br />
+              would mean the world to us. Lets make <br />
+              unforgettable memories together!!
+            </>}
+            buttonField="The Bride"
+            className="flex-row-reverse"
+          />
+        </>}
+      />      
+      {/* Our schedule section */}
+      <FadeInSection
+        ref={receptionSectionRef}
+        delay={0.6}
+        className="flex min-h-[453px] md:min-h-[600px] h-auto bg-[#F9F6ED] md:bg-[#3D4E3C] p-10 md:p-0"
+        children={<>
+          <div className="container flex-1 flex flex-col bg-[#3D4E3C] md:bg-inherit rounded-[10px]">
+            {/* Title Text area  */}
+            <span className="basis-20 md:basis-30 flex justify-center items-center">
+              <h2 className="text-[#FFFFFF] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+                Our Schedule
+              </h2>
+            </span>
+            {/* Our schedule boxs area*/}
+            <div className="flex-1 md:flex md:justify-evenly md:items-center md:gap-20 md:flex-wrap space-y-10 px-10 pb-10">
+              <Eventbox iconUrl={bride_price_icon} time="12:00 PM" event="Paying of bride price" />
+              <Eventbox iconUrl={reception_icon} time="2:00 PM" event="Reception follows" />
+              <Eventbox iconUrl={after_party_icon} time="6:00 PM" event="The after party begings!!!!" />
+            </div>
+          </div>
+        </>}
+      />      
+      {/* Our story section */}
+      <FadeInSection
+        ref={ourStorySectionRef}
+        delay={0.8}
+        className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] p-10 md:p-0"        
+        children={<>
+          <div
+            ref={ourStorySectionRef}
+            className="flex-1 flex flex-col bg-[#FFFFFF] rounded"
+          >
+            {/* Title Text area  */}
+            <span className="basis-20 md:basis-30 flex justify-center items-center">
+              <h2 className="text-[#000000] text-[24px] md:text-[36px] underline decoration-3 decoration-solid leading-[100%] tracking-normal font-normal font-main whitespace-pre text-nowrap text-center">
+                Our Story
+              </h2>
+            </span>
+            {/* main text area*/}
+            <span className="flex-1 flex justify-center items-center">
+              <p className="max-w-[1100px] text-[16px] md:text-[24px] text-[#808080] text-center whitespace-normal text-wrap px-10 pb-10">
+                We connected through a shared perspective- A conversation that stood out and lingered !
+                What followed was a quiet, steady friendship from afar. For two years we checked on each other,
+                built trust amd shared the little things that mattered the most. When she visited the country,
+                we finally met ain person - and from that very day it just felt right. Natural and effortless.
+                Forever was suddenly something real with her. Since then we have shared laughter, deep conversations,
+                fights, tears, and a bond thats only grown stronger with time and distance.
+                Even in a long distance relationship we have been constant and always present in each others lives.
+                The most incredible love that we have found and accepted humbly as a gift from Jah.
+              </p>
+            </span>
+          </div>
+        </>}
+      />
     </main>
     {/* footer area*/}
     <footer className="flex w-full min-h-[216px] md:min-h-[340px] h-auto text-white bg-[#3D4E3C] overflow-hidden">
