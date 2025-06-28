@@ -21,7 +21,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
     }, [dropDown]);
 
     return (
-        <span className="block relative">
+        <span className="inline-block">
             <AnimatePresence>
                 {dropDown && (
                     <motion.span
@@ -55,7 +55,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                         initial="hidden"
                         animate="visible"
                         exit="exit"
-                        className="block fixed top-1 left-1/2 origin-left -translate-x-1/2 z-30"
+                        className="block fixed -top-9 left-1/2 origin-center -translate-x-1/2 z-30"
                     >
                         <motion.span
                             variants={{
@@ -63,9 +63,9 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                                 visible: { opacity: 1, y: 0 },
                                 exit: { opacity: 0, y: -10 },
                             }}
-                            className="block min-h-[70px] sm:min-h-[136px] h-auto min-w-[204px] sm:min-w-[404px] w-auto bg-[#80808066] backdrop-blur-[40px] rounded-b-[20px] p-2 sm:p-4">
+                            className="block h-auto w-auto min-h-[100px] sm:min-h-[136px] min-w-[284px] sm:min-w-[404px] bg-stone-600 backdrop-blur-[40px] rounded-b-[20px] p-3 sm:p-4">
                             <p
-                                className="font-main text-[12px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap "
+                                className="font-main text-[15px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap "
                             >
                                 {message}
                             </p>
@@ -112,3 +112,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
 
 export default Giftbutton;
 
+
+/* 
+backdrop-filter: blur(40px)
+ */

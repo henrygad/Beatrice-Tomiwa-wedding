@@ -49,7 +49,7 @@ const Decktopnav = ({ navLinks }: Props) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap min-h-[53px] h-auto rounded bg-white/5 backdrop-blur-[12px] shadow"
+            className="flex-1 hidden sm:flex justify-evenly items-center font-main font-normal text-[18px] md:text-[24px] text-[#FFFFFF] text-center leading-[100%] tracking-normal whitespace-pre text-nowrap"
         >
             {
                 navLinks.map(nav =>

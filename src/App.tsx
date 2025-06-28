@@ -33,26 +33,30 @@ const App = () => {
     </p>,
   ];
 
+
   return <>
     {/* Header area*/}
     <header
       ref={homeSectionRef}
       className="relative flex w-full h-full overflow-hidden">
       {/* Navigation bar area */}
-      <nav className="container flex items-center gap-x-10 sm:flex-row-reverse fixed top-10 right-0 left-0 w-full md:pl-40 z-20">
+      <nav
+        className="container flex fixed top-10 right-0 left-0 w-full sm:pl-10 md:pl-20 z-20">
         {/* Gift btn */}
-        <Giftbutton
-          buttonField=" Give gift"
-          message={<>
-            Thank you for the love, if you would like to <br />
-            give a monetary gift then use this account
-          </>}
-        />
-        {/* Small screen nav list */}
-        <Responsivenav
-          homeSectionRef={homeSectionRef}
-          ourStorySectionRef={ourStorySectionRef}
-        />
+        <div className="flex-1 flex items-center gap-x-10 sm:flex-row-reverse min-h-[53px] px-4 rounded bg-stone-400/25 backdrop-blur-md shadow">
+          <Giftbutton
+            buttonField=" Give gift"
+            message={<>
+              Thank you for the love, if you would like to <br />
+              give a monetary gift then use this account
+            </>}
+          />
+          {/* Small screen nav list */}
+          <Responsivenav
+            homeSectionRef={homeSectionRef}
+            ourStorySectionRef={ourStorySectionRef}
+          />
+        </div>
       </nav>
     </header>
     {/* Main content area */}
@@ -100,7 +104,7 @@ const App = () => {
                   #TOBEEFOREVER2025
                 </p>
               </motion.span>
-            </motion.span>            
+            </motion.span>
           </div>
         </div>
       </section>
@@ -135,11 +139,11 @@ const App = () => {
             className="absolute bottom-0 translate-y-1/2 right-0 w-[100px] h-[110px] md:w-[250px] md:h-[298px] object-center object-cover shadow shadow-slate-700 rounded"
           />
         </>}
-      />     
+      />
       {/*Empthy space */}
       <section className="min-h-[100px] md:min-h-[250px] h-auto w-full bg-[#F9F6ED] ">
       </section>
-      {/* The bride section */} 
+      {/* The bride section */}
       <FadeInSection
         ref={brideSectionRef}
         delay={0.4}
@@ -161,7 +165,7 @@ const App = () => {
             className="flex-row-reverse"
           />
         </>}
-      />      
+      />
       {/* Our schedule section */}
       <FadeInSection
         ref={receptionSectionRef}
@@ -183,12 +187,12 @@ const App = () => {
             </div>
           </div>
         </>}
-      />      
+      />
       {/* Our story section */}
       <FadeInSection
         ref={ourStorySectionRef}
         delay={0.8}
-        className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] p-10 md:p-0"        
+        className="flex w-full min-h-[600px] h-auto bg-[#F9F6ED] p-10 md:p-0"
         children={<>
           <div
             ref={ourStorySectionRef}

@@ -56,7 +56,7 @@ const Mobilenav = ({ navLinks }: Props) => {
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                    className="flex flex-col justify-evenly items-center absolute top-2 right-8 font-main font-normal italic leading-[100%] tracking-normal text-[16px] text-[#FFFFFF] text-center whitespace-pre text-nowrap min-h-[178px] h-auto min-w-[91px] w-auto bg-[#80808066] backdrop-blur-[40px] rounded shadow-2xl shadow-inherit"
+                    className="flex flex-col justify-evenly items-center absolute top-2 right-8 font-main font-normal italic leading-[100%] tracking-normal text-[16px] text-[#FFFFFF] text-center whitespace-pre text-nowrap min-h-[178px] h-auto min-w-[91px] w-auto bg-stone-600 backdrop-blur-[40px] rounded shadow-2xl shadow-inherit"
                 >
                     {
                         navLinks.map(nav =>
@@ -136,7 +136,6 @@ const Mobilenav = ({ navLinks }: Props) => {
                 />
             </motion.button>
         </motion.span>
-
     </span>;
 };
 
