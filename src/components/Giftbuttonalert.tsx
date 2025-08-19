@@ -14,7 +14,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
             const clear = setTimeout(() => {
                 setDropDown(false);
                 clearTimeout(clear)
-            }, 5000);
+            }, 10000);
 
             return () => clearTimeout(clear);
         }
@@ -63,9 +63,9 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                                 visible: { opacity: 1, y: 0 },
                                 exit: { opacity: 0, y: -10 },
                             }}
-                            className="block h-auto w-auto min-h-[100px] sm:min-h-[136px] min-w-[284px] sm:min-w-[404px] bg-stone-600 backdrop-blur-[40px] rounded-b-[20px] p-3 sm:p-4">
+                            className="block h-auto w-auto min-h-[120px] sm:min-h-[136px] min-w-[320px] sm:min-w-[404px] bg-stone-600 backdrop-blur-[40px] rounded-b-[20px] p-3 sm:p-4">
                             <p
-                                className="font-main text-[15px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap "
+                                className="font-main text-[18px] sm:text-[20px] text-[#FFFFFF] text-center font-normal leading-normal tracking-normal whitespace-normal text-wrap "
                             >
                                 {message}
                             </p>
@@ -83,7 +83,7 @@ const Giftbutton = ({ buttonField, message }: Props) => {
                 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.4, type: "spring", stiffness: 100 }}
-                className="font-main text-[9px] sm:text-[16px] text-[#000000] text-center font-normal leading-[100%] tracking-normal whitespace-pre text-nowrap h-[30px] w-[50px] sm:w-[86px] sm:h-[41px] md:w-[97px] bg-[#FFFFFF] hover:border hover:border-pink-600  rounded-[5px] sm:rounded-[10px] shadow-md shadow-[rgba(236, 72, 153, 0.5)] cursor-pointer">
+                className="font-main text-[14px] sm:text-[16px] text-[#000000] text-center font-normal leading-[100%] tracking-normal whitespace-pre text-nowrap h-[35px] w-[80px] sm:w-[86px] sm:h-[41px] md:w-[97px] bg-[#FFFFFF] hover:border hover:border-pink-600  rounded-[5px] sm:rounded-[10px] shadow-md shadow-[rgba(236, 72, 153, 0.5)] cursor-pointer">
                 <>
                     {!dropDown ?
                         <motion.span
